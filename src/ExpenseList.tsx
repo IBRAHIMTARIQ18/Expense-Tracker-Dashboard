@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 interface Expense {
   id: number;
   description: string;
@@ -25,7 +26,12 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
         </thead>
         <tbody>
           {expenses.map((expense) => (
-            <tr key={expense.id}>
+            <motion.tr
+              key={expense.id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.35 }}
+            >
               <td>{expense.description}</td>
               <td>{expense.amount}</td>
               <td>{expense.category}</td>
@@ -37,7 +43,7 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
                   Delete
                 </button>
               </td>
-            </tr>
+            </motion.tr>
           ))}
         </tbody>
         <tfoot>
