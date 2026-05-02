@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExpenseList from "./ExpenseList";
 import ExpenseFilter from "./ExpenseFilter";
 import ExpenseForm from "./ExpenseForm";
 import categories from "./categories";
 import ExpenseChart from "./ExpenseChart";
+import { motion } from "framer-motion";
 
 const App = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -22,19 +23,29 @@ const App = () => {
 
   return (
     <>
-      <div className="dashboard-shell">
+      <motion.div
+        className="dashboard-shell "
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <h2 className="text-center mb-4 fs-2 text-white text-bg-primary p-2 rounded-pill dashboard-title">
           Expense Tracker Dashboard
         </h2>
         <div className="mb-5">
-          <div className="stats-grid">
-            <div className="stat-card">
-              <h2>$2,450</h2>
+          <div className="stats-grid animate">
+            <div className="stat-card ">
+              <h2>
+                $
+                {expenses
+                  .reduce((acc, expense) => expense.amount + acc, 0)
+                  .toFixed(2)}
+              </h2>
               <p>Total Expenses</p>
             </div>
 
             <div className="stat-card">
-              <h2>12</h2>
+              <h2>{expenses.length}</h2>
               <p>Transactions</p>
             </div>
 
@@ -44,7 +55,7 @@ const App = () => {
             </div>
 
             <div className="stat-card">
-              <h2>4</h2>
+              <h2>{categories.length}</h2>
               <p>Categories</p>
             </div>
           </div>
@@ -71,7 +82,7 @@ const App = () => {
           <h6 className="text-center mt-5 ">No expenses added yet.</h6>
         )}
         <ExpenseChart expenses={expenses} />
-      </div>
+      </motion.div>
     </>
   );
 };
