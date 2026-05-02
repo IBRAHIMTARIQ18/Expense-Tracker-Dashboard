@@ -1,3 +1,20 @@
 body {
-    padding: 20px 40px;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #829cda, #5e80b7, #69b386, #5c88e5);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+  color: white;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
