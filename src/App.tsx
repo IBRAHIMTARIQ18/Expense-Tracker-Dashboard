@@ -3,6 +3,7 @@ import ExpenseList from "./ExpenseList";
 import ExpenseFilter from "./ExpenseFilter";
 import ExpenseForm from "./ExpenseForm";
 import categories from "./categories";
+import ExpenseChart from "./ExpenseChart";
 
 const App = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -26,6 +27,27 @@ const App = () => {
           Expense Tracker Dashboard
         </h2>
         <div className="mb-5">
+          <div className="stats-grid">
+            <div className="stat-card">
+              <h2>$2,450</h2>
+              <p>Total Expenses</p>
+            </div>
+
+            <div className="stat-card">
+              <h2>12</h2>
+              <p>Transactions</p>
+            </div>
+
+            <div className="stat-card">
+              <h2>$420</h2>
+              <p>Largest Expense</p>
+            </div>
+
+            <div className="stat-card">
+              <h2>4</h2>
+              <p>Categories</p>
+            </div>
+          </div>
           <ExpenseForm
             onSubmit={(expense) =>
               setExpenses([
@@ -45,6 +67,10 @@ const App = () => {
           expenses={visibleExpenses}
           onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
         />
+        {expenses.length === 0 && (
+          <h6 className="text-center mt-5 ">No expenses added yet.</h6>
+        )}
+        <ExpenseChart expenses={expenses} />
       </div>
     </>
   );
