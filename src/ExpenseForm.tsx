@@ -37,8 +37,10 @@ const ExpenseForm = ({ onSubmit }: Props) => {
         onSubmit(data);
         reset();
       })}
+      className="form-background"
     >
-      <div className="mb-3">
+      <h2 className="chart-title">Expense Form</h2>
+      <div className="mb-3 ">
         <label htmlFor="description" className="form-label">
           Description
         </label>
@@ -82,7 +84,11 @@ const ExpenseForm = ({ onSubmit }: Props) => {
           <p className="text-danger">{errors.category.message}</p>
         )}
       </div>
-      <button className="btn btn-primary mt-2 second-animation">Submit</button>
+      <div className="text-center">
+        <button className="btn btn-primary mt-2 second-animation">
+          Submit
+        </button>
+      </div>
     </form>
   );
 };

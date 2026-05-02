@@ -21,6 +21,11 @@ const App = () => {
     ? expenses.filter((e) => e.category === selectedCategory)
     : expenses;
 
+  const largestExpense =
+    expenses.length > 0
+      ? Math.max(...expenses.map((expense) => expense.amount))
+      : 0;
+
   return (
     <>
       <motion.div
@@ -50,7 +55,7 @@ const App = () => {
             </div>
 
             <div className="stat-card">
-              <h2>$420</h2>
+              <h2>${largestExpense.toFixed(2)}</h2>
               <p>Largest Expense</p>
             </div>
 
@@ -59,14 +64,21 @@ const App = () => {
               <p>Categories</p>
             </div>
           </div>
-          <ExpenseForm
-            onSubmit={(expense) =>
-              setExpenses([
-                ...expenses,
-                { ...expense, id: expenses.length + 1 },
-              ])
-            }
-          />
+          <div className="container1">
+            <div className="w-50">
+              <ExpenseForm
+                onSubmit={(expense) =>
+                  setExpenses([
+                    ...expenses,
+                    { ...expense, id: expenses.length + 1 },
+                  ])
+                }
+              />
+            </div>
+            <div className="w-50">
+              <ExpenseChart expenses={expenses} />
+            </div>
+          </div>
         </div>
         <div className="mb-3">
           <ExpenseFilter
@@ -81,7 +93,6 @@ const App = () => {
         {expenses.length === 0 && (
           <h6 className="text-center mt-5 ">No expenses added yet.</h6>
         )}
-        <ExpenseChart expenses={expenses} />
       </motion.div>
     </>
   );
