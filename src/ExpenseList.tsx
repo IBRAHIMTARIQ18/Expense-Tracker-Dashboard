@@ -14,7 +14,7 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
   if (expenses.length === 0) return null;
   return (
     <>
-      <table className="table table-bordered">
+      <table className="table table-bordered text-white">
         <thead>
           <tr>
             <th>Description</th>

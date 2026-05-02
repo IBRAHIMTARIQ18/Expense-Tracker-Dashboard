@@ -20,6 +20,21 @@
   animation: textGlow 4s linear infinite;
 }
 
+.form-control,
+.form-select {
+  background: rgba(0, 0, 0, 0.141);
+  border: 1px solid rgba(0, 0, 0, 0.141);
+  color: white;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  border-color: #38bdf8;
+}
+
 @keyframes textGlow {
   from {
     background-position: 0%;

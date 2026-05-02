@@ -71,9 +71,9 @@ const ExpenseForm = ({ onSubmit }: Props) => {
           Category
         </label>
         <select {...register("category")} id="category" className="form-select">
-          <option value=""></option>
+          <option className="text-black" value=""></option>
           {categories.map((category) => (
-            <option key={category} value={category}>
+            <option className="text-black" key={category} value={category}>
               {category}
             </option>
           ))}
