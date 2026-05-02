@@ -94,6 +94,9 @@ const App = () => {
           <h6 className="text-center mt-5 ">No expenses added yet.</h6>
         )}
       </motion.div>
+      <footer className="text-center mt-1 mb-5 text-white fs-5">
+        &copy; 2026 Expense Tracker | Built by M. Ibrahim Tariq
+      </footer>
     </>
   );
 };
