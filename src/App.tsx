@@ -21,26 +21,31 @@ const App = () => {
 
   return (
     <>
-      <h2 className="text-center mb-4 fs-2 text-white text-bg-primary p-2 rounded-pill">
-        Expense Tracker
-      </h2>
-      <div className="mb-5">
-        <ExpenseForm
-          onSubmit={(expense) =>
-            setExpenses([...expenses, { ...expense, id: expenses.length + 1 }])
-          }
-        />
-      </div>
-      <div className="mb-3">
-        <ExpenseFilter
-          onSelectCategory={(category) => setSelectedCategory(category)}
-        />
-      </div>
+      <div className="dashboard-shell">
+        <h2 className="text-center mb-4 fs-2 text-white text-bg-primary p-2 rounded-pill dashboard-title">
+          Expense Tracker Dashboard
+        </h2>
+        <div className="mb-5">
+          <ExpenseForm
+            onSubmit={(expense) =>
+              setExpenses([
+                ...expenses,
+                { ...expense, id: expenses.length + 1 },
+              ])
+            }
+          />
+        </div>
+        <div className="mb-3">
+          <ExpenseFilter
+            onSelectCategory={(category) => setSelectedCategory(category)}
+          />
+        </div>
 
-      <ExpenseList
-        expenses={visibleExpenses}
-        onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
-      />
+        <ExpenseList
+          expenses={visibleExpenses}
+          onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
+        />
+      </div>
     </>
   );
 };
